@@ -40,7 +40,7 @@ app.get("/users/:id", async (req, res) => {
 app.post("/users", async (req, res) => {
   try {
     const { firstName, lastName, emailAddress, username } = req.body;
-    const createPost = await client.user.create({
+    const createPost = await client.user.createMany({
       data: {
         firstName,
         lastName,
