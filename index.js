@@ -39,14 +39,9 @@ app.get("/users/:id", async (req, res) => {
 
 app.post("/users", async (req, res) => {
   try {
-    const { firstName, lastName, emailAddress, username } = req.body;
+    const users = req.body;
     const createPost = await client.user.createManyAndReturn({
-      data: {
-        firstName,
-        lastName,
-        emailAddress,
-        username,
-      },
+      data: users,
     });
     res.status(201).json(createPost);
   } catch (error) {
