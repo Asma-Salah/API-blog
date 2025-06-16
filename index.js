@@ -86,13 +86,9 @@ app.get("/posts/:id", async (req, res) => {
 
 app.post("/posts", async (req, res) => {
   try {
-    const { title, content, authorId } = req.body;
-    const newUserPost = await client.post.create({
-      data: {
-        title,
-        content,
-        authorId,
-      },
+    const posts = req.body;
+    const newUserPost = await client.post.createManyAndReturn({
+      data: posts,
     });
 
     res.status(201).json(newUserPost);
